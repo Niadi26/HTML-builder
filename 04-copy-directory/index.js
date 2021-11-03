@@ -6,12 +6,15 @@ fs.mkdir(path.join(__dirname, 'files-copy'), { recursive: true }, (err) => {
     if (err) {console.log('Cant create directory')}
 });
 
-fs.readdir(path.join(__dirname, 'files-copy'), (err, copyItems) => {
-    if (err) {console.error};
-    for(x = 0; x < copyItems.length; x++) {
-        fs.unlink(path.join(__dirname, 'files-copy', copyItems[x]),()=>{});
-    }
-});
+async function clearDir () {
+    await fs.readdir(path.join(__dirname, 'files-copy'), (err, copyItems) => {
+            if (err) {console.error};
+            for(x = 0; x < copyItems.length; x++) {
+                fs.unlink(path.join(__dirname, 'files-copy', copyItems[x]),()=>{});
+            }
+    });
+}
+clearDir();
 
 fs.readdir(path.join(__dirname, 'files'), (err, items) => {
     if (err) {

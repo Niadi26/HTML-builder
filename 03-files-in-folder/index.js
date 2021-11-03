@@ -10,7 +10,7 @@ const fs = require('fs');
             let info = path.parse(content[i]);
             fs.stat(path.join(__dirname, 'secret-folder', content[i]), (err, stats) =>{
                 if(stats.isFile()) {
-                console.log(`${info.name} - ${info.ext.slice(1)} - ${stats.size}kb`);
+                console.log(`${info.name} - ${info.ext.slice(1)} - ${stats.size}b`);
                 }
             })
         }
