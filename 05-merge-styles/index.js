@@ -7,10 +7,8 @@ let cssStream;
 async function createBundle () {
     await fs.access(path.join(__dirname, 'project-dist', 'bundle.css'), (error) => {
         if (error) {
-            console.log("Файл не найден, создаем");
             cssStream = fs.createWriteStream(path.join(__dirname, 'project-dist', 'bundle.css'));
         } else {
-            console.log("Файл найден: удаляем и создаем заново");
             fs.unlink(path.join(__dirname, 'project-dist', 'bundle.css'), (err) => {
                 if (err) {
                     console.log(err);

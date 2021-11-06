@@ -21,7 +21,6 @@ function makeDir () {
     createCss();
 };
 function createHTML () {
-    console.log('я HTML')
     htmlStream = fs.createWriteStream(path.join(__dirname, 'project-dist', 'index.html'));  
     fs.readdir(path.join(__dirname, 'components'), (err, content) => {
         if(err) {
@@ -58,7 +57,6 @@ function createHTML () {
 }
 
 function createCss () {
-    console.log('Я сss')
     cssStream = fs.createWriteStream(path.join(__dirname, 'project-dist', 'style.css'));  
     fs.readdir(path.join(__dirname, 'styles'), (err, content) => {
         if(err) {
@@ -85,7 +83,6 @@ function createCss () {
 }
 
 function copyAssets (adress) {
-    console.log('Я assets')
     fs.mkdir(path.join(__dirname, 'project-dist', adress), err1 => {
         if(err1) {console.error;} 
      });
@@ -112,7 +109,6 @@ function copyAssets (adress) {
 const rmFilesProm = (adress) => new Promise((res, rej) => {
     fs.readdir(adress, (err,files) => {
         if(err) {rej('error')};
-        console.log('Я удаляю')
         for (let i = 0; i < files.length; i++){
             fs.stat(path.join(adress, files[i]), (error, stats) => {
                 if(stats.isFile()) {
